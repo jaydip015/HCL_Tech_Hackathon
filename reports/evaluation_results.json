@@ -1,0 +1,762 @@
+{
+  "generated_at": "2026-11-17T09:01:03.691031Z",
+  "llm_provider": "offline simulator (testing only, not a real LLM)",
+  "as_of_date": "2026-11-17",
+  "policy_version": "seg-v1.0|comm-v1.0|rem-v1.0|offers-2026.11|priv-v1.0",
+  "classification_accuracy": 1.0,
+  "scenarios": [
+    {
+      "scenario": "A - Loyal customer",
+      "customer_id": "DEMO-A-LOYAL",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": "LOYALTY_001",
+      "stage": null,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "offer": true
+      },
+      "passed": true,
+      "draft_id": "DRF-FBBB3729F4"
+    },
+    {
+      "scenario": "B - Declining customer",
+      "customer_id": "DEMO-B-DECLINING",
+      "expected_segment": "DECLINING",
+      "predicted_segment": "DECLINING",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": "REENGAGE_001",
+      "stage": null,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "offer": true
+      },
+      "passed": true,
+      "draft_id": "DRF-1019786442"
+    },
+    {
+      "scenario": "C - Dormant customer",
+      "customer_id": "DEMO-C-DORMANT",
+      "expected_segment": "DORMANT",
+      "predicted_segment": "DORMANT",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": "WINBACK_001",
+      "stage": null,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "offer": true
+      },
+      "passed": true,
+      "draft_id": "DRF-9C948A66B2"
+    },
+    {
+      "scenario": "D - Overdue customer (stage 2)",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_segment": "OVERDUE",
+      "predicted_segment": "OVERDUE",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": null,
+      "stage": 2,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "stage": true
+      },
+      "passed": true,
+      "draft_id": "DRF-C47B4D9192"
+    },
+    {
+      "scenario": "D1 - Overdue customer (stage 1)",
+      "customer_id": "DEMO-D1-OVERDUE-S1",
+      "expected_segment": "OVERDUE",
+      "predicted_segment": "OVERDUE",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": null,
+      "stage": 1,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "stage": true
+      },
+      "passed": true,
+      "draft_id": "DRF-79A2A291EC"
+    },
+    {
+      "scenario": "D3 - Overdue customer (stage 3)",
+      "customer_id": "DEMO-D3-OVERDUE-S3",
+      "expected_segment": "OVERDUE",
+      "predicted_segment": "OVERDUE",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": null,
+      "stage": 3,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "stage": true
+      },
+      "passed": true,
+      "draft_id": "DRF-0B4433373F"
+    },
+    {
+      "scenario": "E - No consent",
+      "customer_id": "DEMO-E-NOCONSENT",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "NO_CONSENT"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-BCCECDB40D"
+    },
+    {
+      "scenario": "F - Invalid (expired) offer",
+      "customer_id": "DEMO-F-EXPIRED-OFFER",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": "LOYALTY_001",
+      "stage": null,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "offer": true
+      },
+      "passed": true,
+      "draft_id": "DRF-569FCC7D07"
+    },
+    {
+      "scenario": "G - Hallucinated amount",
+      "customer_id": "DEMO-G-HALLUCINATION",
+      "expected_segment": "OVERDUE",
+      "predicted_segment": "OVERDUE",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": null,
+      "stage": 1,
+      "mode": "repair",
+      "attempts": 2,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "stage": true
+      },
+      "passed": true,
+      "draft_id": "DRF-E81937AD7E"
+    },
+    {
+      "scenario": "H - Contradictory payment data",
+      "customer_id": "DEMO-H-CONTRADICTORY",
+      "expected_segment": null,
+      "predicted_segment": null,
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "MANUAL_REVIEW"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-9CAAE4C0E6"
+    },
+    {
+      "scenario": "I - Recently contacted",
+      "customer_id": "DEMO-I-RECENT-CONTACT",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "RECENT_CONTACT"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-CCBF9587DE"
+    },
+    {
+      "scenario": "J - Missing customer evidence",
+      "customer_id": "DEMO-J-MISSING",
+      "expected_segment": null,
+      "predicted_segment": null,
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "MANUAL_REVIEW",
+        "MANUAL_REVIEW",
+        "MANUAL_REVIEW"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-63168F3E30"
+    },
+    {
+      "scenario": "K - Consistent customer",
+      "customer_id": "DEMO-K-CONSISTENT",
+      "expected_segment": "CONSISTENT",
+      "predicted_segment": "CONSISTENT",
+      "expected_status": "PENDING_REVIEW",
+      "status": "PENDING_REVIEW",
+      "offer": "THANKS_001",
+      "stage": null,
+      "mode": "llm",
+      "attempts": 1,
+      "block_reasons": [],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "offer": true
+      },
+      "passed": true,
+      "draft_id": "DRF-ED06064C92"
+    }
+  ],
+  "scenario_pass_rate": 1.0,
+  "validator_cases": [
+    {
+      "case": "Wrong amount",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "AMOUNT_VERIFICATION",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "AMOUNT_VERIFICATION",
+        "UNSUPPORTED_CLAIMS"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Wrong due date",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "DATE_VERIFICATION",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "DATE_VERIFICATION",
+        "UNSUPPORTED_CLAIMS",
+        "REQUIRED_CONTENT"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Invented tenure",
+      "customer_id": "DEMO-A-LOYAL",
+      "expected_check": "UNSUPPORTED_CLAIMS",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "UNSUPPORTED_CLAIMS"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Invented discount percentage",
+      "customer_id": "DEMO-A-LOYAL",
+      "expected_check": "PERCENTAGE_VERIFICATION",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "PERCENTAGE_VERIFICATION",
+        "UNSUPPORTED_CLAIMS",
+        "OFFER_TERMS"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Offer terms dropped",
+      "customer_id": "DEMO-A-LOYAL",
+      "expected_check": "OFFER_TERMS",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "OFFER_TERMS"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Promo in reminder",
+      "customer_id": "DEMO-D1-OVERDUE-S1",
+      "expected_check": "NO_PROMO_IN_REMINDER",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "PERCENTAGE_VERIFICATION",
+        "NO_PROMO_IN_REMINDER"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Unapproved promotion",
+      "customer_id": "DEMO-K-CONSISTENT",
+      "expected_check": "UNAPPROVED_PROMOTION",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "UNAPPROVED_PROMOTION"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Banned threat",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "PROHIBITED_PHRASES",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "PROHIBITED_PHRASES"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Internal label disclosed",
+      "customer_id": "DEMO-B-DECLINING",
+      "expected_check": "INTERNAL_DISCLOSURE",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "INTERNAL_DISCLOSURE"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Card number leaked",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "PII_LEAKAGE",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "UNSUPPORTED_CLAIMS",
+        "PII_LEAKAGE"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Unknown link",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "PII_LEAKAGE",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "PII_LEAKAGE"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Dispute link missing",
+      "customer_id": "DEMO-D-OVERDUE",
+      "expected_check": "SUPPORT_CONTACT",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "REQUIRED_CONTENT",
+        "SUPPORT_CONTACT"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Unresolved placeholder",
+      "customer_id": "DEMO-C-DORMANT",
+      "expected_check": "PLACEHOLDERS_RESOLVED",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "PLACEHOLDERS_RESOLVED"
+      ],
+      "retry_recommended": true
+    },
+    {
+      "case": "Body too short",
+      "customer_id": "DEMO-A-LOYAL",
+      "expected_check": "SCHEMA",
+      "clean_template_passed": true,
+      "caught": true,
+      "caught_by_expected_check": true,
+      "failed_checks": [
+        "SCHEMA",
+        "OFFER_TERMS",
+        "REQUIRED_CONTENT",
+        "SUPPORT_CONTACT"
+      ],
+      "retry_recommended": true
+    }
+  ],
+  "validator_catch_rate": 1.0,
+  "validator_precise_rate": 1.0,
+  "false_positive_rate_on_clean_templates": 0.0,
+  "fault_injection": [
+    {
+      "fault": "wrong_amount",
+      "description": "LLM types its own (wrong) amount instead of the verified one",
+      "customer_id": "DEMO-D1-OVERDUE-S1",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "repair",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "repair",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    },
+    {
+      "fault": "banned_phrase",
+      "description": "LLM adds a threatening phrase",
+      "customer_id": "DEMO-D-OVERDUE",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "repair",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "repair",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    },
+    {
+      "fault": "promo_in_reminder",
+      "description": "LLM adds a discount to a payment reminder",
+      "customer_id": "DEMO-D3-OVERDUE-S3",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "repair",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "repair",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    },
+    {
+      "fault": "invalid_json",
+      "description": "LLM returns text that is not valid JSON",
+      "customer_id": "DEMO-B-DECLINING",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "format_retry",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "format_retry",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    },
+    {
+      "fault": "missing_dispute",
+      "description": "LLM drops the dispute link",
+      "customer_id": "DEMO-D-OVERDUE",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "repair",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "repair",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    },
+    {
+      "fault": "invented_offer",
+      "description": "LLM invents an unapproved discount",
+      "customer_id": "DEMO-K-CONSISTENT",
+      "final_status": "PENDING_REVIEW",
+      "final_mode": "repair",
+      "attempts": [
+        [
+          "llm",
+          false
+        ],
+        [
+          "repair",
+          true
+        ]
+      ],
+      "first_attempt_caught": true,
+      "recovered": true
+    }
+  ],
+  "groundedness_rate": 1.0,
+  "offer_compliance_rate": 1.0,
+  "consent_compliance_rate": 1.0,
+  "drafts_checked": 15,
+  "blocking_results": [
+    {
+      "scenario": "E - No consent",
+      "customer_id": "DEMO-E-NOCONSENT",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "NO_CONSENT"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-BCCECDB40D"
+    },
+    {
+      "scenario": "H - Contradictory payment data",
+      "customer_id": "DEMO-H-CONTRADICTORY",
+      "expected_segment": null,
+      "predicted_segment": null,
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "MANUAL_REVIEW"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-9CAAE4C0E6"
+    },
+    {
+      "scenario": "I - Recently contacted",
+      "customer_id": "DEMO-I-RECENT-CONTACT",
+      "expected_segment": "LOYAL",
+      "predicted_segment": "LOYAL",
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "RECENT_CONTACT"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-CCBF9587DE"
+    },
+    {
+      "scenario": "J - Missing customer evidence",
+      "customer_id": "DEMO-J-MISSING",
+      "expected_segment": null,
+      "predicted_segment": null,
+      "expected_status": "BLOCKED",
+      "status": "BLOCKED",
+      "offer": null,
+      "stage": null,
+      "mode": "not_generated",
+      "attempts": 0,
+      "block_reasons": [
+        "MANUAL_REVIEW",
+        "MANUAL_REVIEW",
+        "MANUAL_REVIEW"
+      ],
+      "checks": {
+        "segment": true,
+        "status": true,
+        "block": true
+      },
+      "passed": true,
+      "draft_id": "DRF-63168F3E30"
+    }
+  ],
+  "review_session": [
+    [
+      "DEMO-D1-OVERDUE-S1",
+      "approve+send",
+      "MOCK_SENT"
+    ],
+    [
+      "DEMO-D3-OVERDUE-S3",
+      "edit",
+      "PENDING_REVIEW"
+    ],
+    [
+      "DEMO-B-DECLINING",
+      "reject",
+      "REJECTED"
+    ],
+    [
+      "DEMO-D-OVERDUE",
+      "approve+send",
+      "MOCK_SENT"
+    ],
+    [
+      "DEMO-K-CONSISTENT",
+      "edit",
+      "PENDING_REVIEW"
+    ],
+    [
+      "DEMO-A-LOYAL",
+      "reject",
+      "REJECTED"
+    ]
+  ],
+  "metrics": {
+    "total_customers": 13,
+    "customers_processed": 13,
+    "customers_per_segment": {
+      "CONSISTENT": 1,
+      "DECLINING": 1,
+      "DORMANT": 1,
+      "LOYAL": 4,
+      "MANUAL_REVIEW": 2,
+      "OVERDUE": 4
+    },
+    "offers_selected": {
+      "LOYALTY_001": 2,
+      "REENGAGE_001": 2,
+      "THANKS_001": 2,
+      "WINBACK_001": 1
+    },
+    "drafts_total": 19,
+    "drafts_generated": 15,
+    "drafts_by_status": {
+      "BLOCKED": 4,
+      "CANCELLED": 6,
+      "MOCK_SENT": 2,
+      "PENDING_REVIEW": 5,
+      "REJECTED": 2
+    },
+    "first_pass_validation_rate": 0.533,
+    "validation_failure_rate": 0.0,
+    "retry_rate": 0.467,
+    "fallback_template_usage": 0,
+    "approved": 2,
+    "rejected": 2,
+    "blocked": 4,
+    "mock_emails_sent": 2,
+    "avg_generation_latency_ms": 5.0,
+    "tokens": {
+      "input": 13821,
+      "output": 2832
+    },
+    "estimated_cost_usd": 0.0839,
+    "validation_failures_by_check": {},
+    "block_reasons": {
+      "MANUAL_REVIEW": 4,
+      "NO_CONSENT": 1,
+      "RECENT_CONTACT": 1
+    },
+    "review_actions": {
+      "APPROVE": 2,
+      "EDIT": 2,
+      "REJECT": 2
+    },
+    "reviewer_edit_rate": 0.5,
+    "reviewer_rejection_rate": 0.5
+  }
+}

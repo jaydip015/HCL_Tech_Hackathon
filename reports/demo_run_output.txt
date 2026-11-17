@@ -1,0 +1,245 @@
+Generator: No LLM configured - approved static templates are used
+
+==========================================================================================
+A - Loyal customer  [DEMO-A-LOYAL]
+48 months tenure, always pays on time, consented, not contacted recently.
+==========================================================================================
+Segment: LOYAL  all=['LOYAL', 'CONSISTENT']  reasons=['TENURE_GE_36M', 'ON_TIME_GE_95PCT', 'ACTIVE_LT_30D']
+Strategy: REWARD / WARM / TPL_LOYALTY  stage=None  offer=LOYALTY_001
+Draft DRF-FFB2FEA673: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Thank you for 48 months with ExampleTel
+Dear Priya,
+
+Thank you for staying with ExampleTel for 48 months. We are grateful for your loyalty and truly appreciate the trust you place in us.
+
+To say thank you, we are pleased to offer you our Loyalty Rewards: 10% discount. Valid for the next billing cycle only. Applies to base plan charges. Please use it before 31 March 2027.
+
+If you have any questions, contact us at 1800-200-3000 or support@example-telecom.com.
+
+Warm regards,
+The ExampleTel Team
+
+Mock delivery: {'draft_id': 'DRF-FFB2FEA673', 'message_id': 'MOCK-BA0D369A4024', 'status': 'MOCK_SENT', 'to': 'p***@example.com'}
+
+==========================================================================================
+B - Declining customer  [DEMO-B-DECLINING]
+Usage fell from 310 GB to 82 GB over the last quarter.
+==========================================================================================
+Segment: DECLINING  all=['DECLINING']  reasons=['HAS_PRIOR_USAGE', 'USAGE_DROP_GT_40PCT']
+Strategy: REENGAGE / FRIENDLY / TPL_REENGAGE  stage=None  offer=REENGAGE_001
+Draft DRF-F55D2FA66B: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: We'd love to help you get more from your plan
+Hi Rohan,
+
+We would love to help you get the most out of your ExampleTel plan. If anything is not working the way you want, we are happy to help you find the right fit.
+
+To welcome you back, here is an approved offer for you: Welcome Back Offer - 5 GB bonus data. Bonus data is valid for 30 days after activation. It is available until 31 January 2027.
+
+Our team is here to help at 1800-200-3000 or support@example-telecom.com.
+
+Best wishes,
+The ExampleTel Team
+
+Mock delivery: {'draft_id': 'DRF-F55D2FA66B', 'message_id': 'MOCK-B0DCCCF07124', 'status': 'MOCK_SENT', 'to': 'r***@example.com'}
+
+==========================================================================================
+C - Dormant customer  [DEMO-C-DORMANT]
+No activity for 100 days.
+==========================================================================================
+Segment: DORMANT  all=['DORMANT', 'DECLINING']  reasons=['INACTIVE_GE_90D', 'HAS_PRIOR_USAGE', 'USAGE_DROP_GT_40PCT']
+Strategy: REACTIVATE / FRIENDLY / TPL_REACTIVATE  stage=None  offer=WINBACK_001
+Draft DRF-8967540443: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: We miss you, Ananya
+Hi Ananya,
+
+It has been a while since we last saw you, and we miss having you with ExampleTel. We would love to welcome you back whenever you are ready.
+
+To make coming back easier, here is an approved offer: Win-Back Offer - 20% discount. Valid for the first billing cycle after you resume using the service. It is available until 28 February 2027.
+
+If there is anything we can do better, we are here to help at 1800-200-3000 or support@example-telecom.com.
+
+Best wishes,
+The ExampleTel Team
+
+Mock delivery: {'draft_id': 'DRF-8967540443', 'message_id': 'MOCK-96375AEFAB10', 'status': 'MOCK_SENT', 'to': 'a***@example.com'}
+
+==========================================================================================
+D - Overdue customer (stage 2)  [DEMO-D-OVERDUE]
+Bill of $134.40 overdue by 20 days; also loyal (secondary segment). No promotions allowed.
+==========================================================================================
+Segment: OVERDUE  all=['OVERDUE', 'LOYAL']  reasons=['OVERDUE_GT_0D', 'TENURE_GE_36M']
+Strategy: REMIND / FIRM / TPL_REMIND_S2  stage=2  offer=None
+  note: 20 days overdue -> stage 2 (Firm but respectful reminder).
+  note: Secondary segments ['LOYAL'] ignored: reminders take priority and never carry offers.
+Draft DRF-672E4470B5: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Action needed: your payment of $134.40 is overdue
+Dear Vikram,
+
+Our records show that your payment of $134.40, due on 28 October 2026, is now 20 days overdue. Please pay the outstanding amount as soon as possible.
+
+If you are having difficulty paying, or you believe the bill is incorrect, please contact us on 1800-200-3000 or raise a dispute at https://www.example-telecom.com/billing/dispute. We are here to help.
+
+Regards,
+The ExampleTel Billing Team
+
+Mock delivery: {'draft_id': 'DRF-672E4470B5', 'message_id': 'MOCK-48D78AFB2617', 'status': 'MOCK_SENT', 'to': 'v***@example.com'}
+
+==========================================================================================
+D1 - Overdue customer (stage 1)  [DEMO-D1-OVERDUE-S1]
+Bill overdue by 7 days: courteous reminder.
+==========================================================================================
+Segment: OVERDUE  all=['OVERDUE']  reasons=['OVERDUE_GT_0D']
+Strategy: REMIND / COURTEOUS / TPL_REMIND_S1  stage=1  offer=None
+  note: 7 days overdue -> stage 1 (Courteous reminder).
+Draft DRF-E5972B0466: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Friendly reminder: your ExampleTel bill
+Dear Kavya,
+
+This is a friendly reminder that your payment of $58.90, which was due on 10 November 2026, appears to be outstanding. Please make the payment at your earliest convenience.
+
+If you have already paid, thank you, and please ignore this message. If you believe this bill is incorrect, you can raise a dispute at https://www.example-telecom.com/billing/dispute or call us on 1800-200-3000.
+
+Kind regards,
+The ExampleTel Billing Team
+
+Mock delivery: {'draft_id': 'DRF-E5972B0466', 'message_id': 'MOCK-7ADAA3045F4D', 'status': 'MOCK_SENT', 'to': 'k***@example.com'}
+
+==========================================================================================
+D3 - Overdue customer (stage 3)  [DEMO-D3-OVERDUE-S3]
+Partial payment, balance overdue by 45 days: formal notice.
+==========================================================================================
+Segment: OVERDUE  all=['OVERDUE']  reasons=['OVERDUE_GT_0D']
+Strategy: REMIND / FORMAL / TPL_REMIND_S3  stage=3  offer=None
+  note: 45 days overdue -> stage 3 (Formal notice).
+Draft DRF-0B0F5BB7B4: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Formal notice: overdue balance of $92.15
+Dear Arjun,
+
+This is a formal notice that the balance of $92.15 on your account, which was due on 3 October 2026, remains unpaid after 45 days. Please arrange payment or contact us to discuss your options.
+
+If you dispute this balance, please raise a dispute at https://www.example-telecom.com/billing/dispute or call 1800-200-3000. Our team will review it with you.
+
+Sincerely,
+The ExampleTel Billing Team
+
+Mock delivery: {'draft_id': 'DRF-0B0F5BB7B4', 'message_id': 'MOCK-E9619E6B64AC', 'status': 'MOCK_SENT', 'to': 'a***@example.com'}
+
+==========================================================================================
+E - No consent  [DEMO-E-NOCONSENT]
+Loyal customer who has not consented to marketing: promotional email must be blocked.
+==========================================================================================
+Segment: LOYAL  all=['LOYAL', 'CONSISTENT']  reasons=['TENURE_GE_36M', 'ON_TIME_GE_95PCT', 'ACTIVE_LT_30D']
+Strategy: REWARD / WARM / TPL_LOYALTY  stage=None  offer=None
+Draft DRF-A7AD401083: BLOCKED  mode=not_generated  attempts=0
+  BLOCKED: NO_CONSENT - Customer has no verified marketing consent; promotional communication is blocked.
+
+==========================================================================================
+F - Invalid (expired) offer  [DEMO-F-EXPIRED-OFFER]
+Generate with forced offer LOYALTY_2025 (expired): it must be rejected and a valid offer used.
+==========================================================================================
+Segment: LOYAL  all=['LOYAL', 'CONSISTENT']  reasons=['TENURE_GE_36M', 'ON_TIME_GE_95PCT', 'ACTIVE_LT_30D']
+Strategy: REWARD / WARM / TPL_LOYALTY  stage=None  offer=LOYALTY_001
+  note: Assigned offer LOYALTY_2025 rejected (EXPIRED: expired on 2025-12-31); strategy recomputed.
+Draft DRF-ECA311BA38: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Thank you for 52 months with ExampleTel
+Dear Rahul,
+
+Thank you for staying with ExampleTel for 52 months. We are grateful for your loyalty and truly appreciate the trust you place in us.
+
+To say thank you, we are pleased to offer you our Loyalty Rewards: 10% discount. Valid for the next billing cycle only. Applies to base plan charges. Please use it before 31 March 2027.
+
+If you have any questions, contact us at 1800-200-3000 or support@example-telecom.com.
+
+Warm regards,
+The ExampleTel Team
+
+Mock delivery: {'draft_id': 'DRF-ECA311BA38', 'message_id': 'MOCK-05ACAA492AB8', 'status': 'MOCK_SENT', 'to': 'r***@example.com'}
+
+==========================================================================================
+G - Hallucinated amount  [DEMO-G-HALLUCINATION]
+Generate with fault injection: first draft states a wrong amount; validator must catch it.
+==========================================================================================
+Segment: OVERDUE  all=['OVERDUE']  reasons=['OVERDUE_GT_0D']
+Strategy: REMIND / COURTEOUS / TPL_REMIND_S1  stage=1  offer=None
+  note: 10 days overdue -> stage 1 (Courteous reminder).
+Draft DRF-A36B9A62C6: PENDING_REVIEW  mode=repair  attempts=2
+  attempt 1: llm              passed=False failures=["WRITING"]
+  attempt 2: repair           passed=True failures=[]
+
+Subject: Friendly reminder: your ExampleTel bill
+Dear Sneha,
+
+This is a friendly reminder that your payment of $79.99, which was due on 7 November 2026, appears to be outstanding. Please make the payment at your earliest convenience.
+
+If you have already paid, thank you, and please ignore this message. If you believe this bill is incorrect, you can raise a dispute at https://www.example-telecom.com/billing/dispute or call us on 1800-200-3000.
+
+Kind regards,
+The ExampleTel Billing Team
+
+Mock delivery: {'draft_id': 'DRF-A36B9A62C6', 'message_id': 'MOCK-A69C536A5E35', 'status': 'MOCK_SENT', 'to': 's***@example.com'}
+
+==========================================================================================
+H - Contradictory payment data  [DEMO-H-CONTRADICTORY]
+Marked PAID but has $45.00 outstanding: data failure, manual escalation, no reminder.
+==========================================================================================
+Segment: MANUAL_REVIEW  all=[]  reasons=['DATA_ISSUE:CONTRADICTORY_PAYMENT - Marked PAID but has a positive outstanding amount (45.00).']
+Strategy: None / None / None  stage=None  offer=None
+Draft DRF-721E9F3092: BLOCKED  mode=not_generated  attempts=0
+  BLOCKED: MANUAL_REVIEW - DATA_ISSUE:CONTRADICTORY_PAYMENT - Marked PAID but has a positive outstanding amount (45.00).
+
+==========================================================================================
+I - Recently contacted  [DEMO-I-RECENT-CONTACT]
+Contacted 2 days ago: blocked by the 7-day marketing cooldown.
+==========================================================================================
+Segment: LOYAL  all=['LOYAL', 'CONSISTENT']  reasons=['TENURE_GE_36M', 'ON_TIME_GE_95PCT', 'ACTIVE_LT_30D']
+Strategy: REWARD / WARM / TPL_LOYALTY  stage=None  offer=None
+Draft DRF-3D35A79F3B: BLOCKED  mode=not_generated  attempts=0
+  BLOCKED: RECENT_CONTACT - Last contact 2 day(s) ago; marketing cooldown is 7 days.
+
+==========================================================================================
+J - Missing customer evidence  [DEMO-J-MISSING]
+Tenure, usage and activity are missing: no classification is fabricated.
+==========================================================================================
+Segment: MANUAL_REVIEW  all=[]  reasons=['DATA_ISSUE:MISSING_TENURE - Tenure is missing.', 'DATA_ISSUE:MISSING_ACTIVITY - Last activity date is missing.', 'DATA_ISSUE:MISSING_USAGE - Usage history is incomplete.']
+Strategy: None / None / None  stage=None  offer=None
+Draft DRF-AC846DA9EC: BLOCKED  mode=not_generated  attempts=0
+  BLOCKED: MANUAL_REVIEW - DATA_ISSUE:MISSING_TENURE - Tenure is missing.
+  BLOCKED: MANUAL_REVIEW - DATA_ISSUE:MISSING_ACTIVITY - Last activity date is missing.
+  BLOCKED: MANUAL_REVIEW - DATA_ISSUE:MISSING_USAGE - Usage history is incomplete.
+
+==========================================================================================
+K - Consistent customer  [DEMO-K-CONSISTENT]
+Pays on time and active this week: appreciation email.
+==========================================================================================
+Segment: CONSISTENT  all=['CONSISTENT']  reasons=['ON_TIME_GE_95PCT', 'ACTIVE_LT_30D']
+Strategy: APPRECIATION / WARM / TPL_THANKS  stage=None  offer=THANKS_001
+Draft DRF-8E7A7D3C34: PENDING_REVIEW  mode=static  attempts=1
+  attempt 1: static           passed=True failures=[]
+
+Subject: Thank you, Grace
+Dear Grace,
+
+Thank you for being a valued ExampleTel customer. We truly appreciate having you with us.
+
+As a small thank-you, we have an approved offer for you: Thank You Bonus - 2 GB bonus data. Bonus data is valid for 30 days after activation. This offer is available until 30 June 2027.
+
+If you ever need help, our support team is available at 1800-200-3000 or support@example-telecom.com.
+
+Warm regards,
+The ExampleTel Team
+
+Mock delivery: {'draft_id': 'DRF-8E7A7D3C34', 'message_id': 'MOCK-13C3D3C536C4', 'status': 'MOCK_SENT', 'to': 'g***@example.com'}
