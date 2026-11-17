@@ -1,0 +1,57 @@
+# Customer segmentation rules (SYNTHETIC DEMONSTRATION POLICY).
+# Source document: knowledge_base/policies/02_customer_segmentation_policy.md
+# Every matching segment is kept with its reason code; the primary segment is the
+# first match in `priority`. Suppression rules are applied later by the strategy selector.
+version: "seg-v1.0"
+
+priority: [OVERDUE, DORMANT, DECLINING, LOYAL, CONSISTENT]
+
+segments:
+  OVERDUE:
+    description: "Verified unpaid or partially paid bill past its due date."
+    policy_ref: "Customer Segmentation Policy §2.1"
+    all:
+      - {field: days_overdue, op: ">", value: 0, reason_code: OVERDUE_GT_0D}
+  DORMANT:
+    description: "No recorded activity for 90 days or more."
+    policy_ref: "Customer Segmentation Policy §2.2"
+    all:
+      - {field: days_since_active, op: ">=", value: 90, reason_code: INACTIVE_GE_90D}
+  DECLINING:
+    description: "Usage in the last 3 months fell below 60% of the previous 3 months."
+    policy_ref: "Customer Segmentation Policy §2.3"
+    all:
+      - {field: usage_prev_3m, op: ">", value: 0, reason_code: HAS_PRIOR_USAGE}
+      - {field: usage_last_3m, op: "<", ref_field: usage_prev_3m, factor: 0.6, reason_code: USAGE_DROP_GT_40PCT}
+  LOYAL:
+    description: "Customer for 36 months or more."
+    policy_ref: "Customer Segmentation Policy §2.4"
+    all:
+      - {field: tenure_months, op: ">=", value: 36, reason_code: TENURE_GE_36M}
+  CONSISTENT:
+    description: "Pays on time (>= 95% of bills) and active in the last 30 days."
+    policy_ref: "Customer Segmentation Policy §2.5"
+    all:
+      - {field: on_time_payment_ratio, op: ">=", value: 0.95, reason_code: ON_TIME_GE_95PCT, near_margin: 0.01}
+      - {field: days_since_active, op: "<", value: 30, reason_code: ACTIVE_LT_30D}
+
+# Fields that must be present before any classification is attempted.
+required_fields:
+  - tenure_months
+  - days_since_active
+  - usage_last_3m
+  - usage_prev_3m
+  - on_time_payment_ratio
+  - payment_status
+
+confidence:
+  base: 1.0
+  # A value within this relative margin of a threshold lowers confidence
+  # (a condition may override it with `near_margin`).
+  near_threshold_margin: 0.10
+  near_threshold_penalty: 0.15
+  # Below this the customer goes to manual review instead of automated outreach.
+  min_confidence_for_auto: 0.60
+
+# What happens when no segment matches or data is missing/contradictory.
+no_match_action: MANUAL_REVIEW
