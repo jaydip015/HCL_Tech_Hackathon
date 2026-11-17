@@ -1,0 +1,63 @@
+# Data mapping layer: Kaggle "Customer Churn Prediction Dataset 1M" (isandeep06)
+# -> internal customer fields. Column names were taken from the dataset's published
+# schema (32 columns). The loader still inspects the real CSV header at runtime and
+# reports any mapped column that is missing, so a schema change fails loudly.
+version: "map-v1.0"
+
+dataset:
+  kaggle_slug: "isandeep06/customer-churn-prediction-dataset-1m"
+  expected_file: "customer_churn_1m.csv"
+  chunk_size: 100000
+
+# source_column -> internal_field  (provenance: ORIGINAL)
+column_map:
+  customer_id: customer_id
+  tenure: tenure_months
+  contract: contract_type
+  payment_method: payment_method
+  paperless_billing: paperless_billing
+  monthlycharges: monthly_charges
+  totalcharges: total_charges
+  num_services: num_services
+  customer_satisfaction: customer_satisfaction
+  num_complaints: num_complaints
+  num_service_calls: customer_service_calls
+  late_payments: late_payments
+  avg_monthly_gb: avg_monthly_gb
+  days_since_last_interaction: days_since_last_interaction
+  churn: churn_status
+
+# Columns in the source that are deliberately dropped (protected characteristics or
+# proxies; see policies/privacy.yaml). They are never written to the database.
+dropped_columns:
+  - gender
+  - age
+  - senior_citizen
+  - marital_status
+  - dependents
+  - education
+  - annual_income
+  - credit_score
+  - signup_date
+
+# Value normalisation
+value_maps:
+  contract_type:
+    month_to_month: "Month-to-month"
+    month-to-month: "Month-to-month"
+    one_year: "One year"
+    two_year: "Two year"
+
+numeric_fields: [tenure_months, monthly_charges, total_charges, num_services, customer_satisfaction,
+                 num_complaints, customer_service_calls, late_payments, avg_monthly_gb,
+                 days_since_last_interaction, churn_status]
+
+# Field provenance shown in the UI ("original" vs "derived" vs "synthetic").
+provenance:
+  original: [customer_id, tenure_months, contract_type, payment_method, paperless_billing,
+             monthly_charges, total_charges, num_services, customer_satisfaction, num_complaints,
+             customer_service_calls, late_payments, avg_monthly_gb, days_since_last_interaction,
+             churn_status]
+  derived: [last_active_date, on_time_payment_ratio, usage_prev_3m]
+  synthetic: [customer_name, email_address, usage_last_3m, bill_due_date, amount_due, payment_status,
+              marketing_consent, last_contacted_date, customer_support_contact, contact_frequency]
