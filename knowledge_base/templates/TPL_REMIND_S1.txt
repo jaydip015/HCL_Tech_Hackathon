@@ -1,0 +1,11 @@
+Subject: Friendly reminder: your {company_name} bill
+CTA: Pay your bill
+---
+Dear {first_name},
+
+This is a friendly reminder that your payment of {amount_due}, which was due on {due_date}, appears to be outstanding. Please make the payment at your earliest convenience.
+
+If you have already paid, thank you, and please ignore this message. If you believe this bill is incorrect, you can raise a dispute at {dispute_url} or call us on {support_phone}.
+
+Kind regards,
+The {company_name} Billing Team

@@ -1,0 +1,11 @@
+Subject: Formal notice: overdue balance of {amount_due}
+CTA: Arrange payment
+---
+Dear {first_name},
+
+This is a formal notice that the balance of {amount_due} on your account, which was due on {due_date}, remains unpaid after {days_overdue} days. Please arrange payment or contact us to discuss your options.
+
+If you dispute this balance, please raise a dispute at {dispute_url} or call {support_phone}. Our team will review it with you.
+
+Sincerely,
+The {company_name} Billing Team

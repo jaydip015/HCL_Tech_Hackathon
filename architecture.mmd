@@ -1,0 +1,34 @@
+flowchart TD
+    CSV[Kaggle CSV 1M rows / upload / local sample] --> PRE[P1 Preprocessing<br/>mapping, cleaning, drop protected fields]
+    PRE --> SYN[P1 Synthetic enrichment<br/>deterministic, labelled]
+    SYN --> DB[(SQLite)]
+    DEMO[P1 Labelled demo customers] --> DB
+    DB --> PROF[P1 Profile builder<br/>+ data-quality gate]
+    PROF --> SEG[P2 Segmentation engine<br/>segmentation.yaml]
+    KB[9 synthetic policy docs] --> IDX[P2 Chunk + embed<br/>ST or TF-IDF / Chroma or local]
+    IDX --> RAG[P2 Retriever]
+    SEG --> STRAT[P3 Strategy selector<br/>suppression: consent, cooldown, duplicate, overdue]
+    CAT[P3 Approved offer catalog<br/>offers.yaml] --> STRAT
+    STRAT -->|blocked: DATA/POLICY| BLK[Draft BLOCKED<br/>LLM never called]
+    STRAT --> GEN[P3 LLM email generator<br/>placeholders for facts]
+    RAG -->|tone/wording guidance| GEN
+    GEN --> VAL{P4 Deterministic validator<br/>16+ checks}
+    VAL -->|WRITING| REP[Targeted repair prompt<br/>max 2]
+    VAL -->|FORMAT| RETRY[Format retry x1]
+    REP --> VAL
+    RETRY --> VAL
+    VAL -->|DATA/POLICY| BLK
+    VAL -->|repairs exhausted| FB[Static approved template] --> VAL2{Validate again}
+    VAL2 -->|fail| BLK
+    VAL -->|pass| JUDGE[Optional LLM tone judge<br/>advisory WARN only]
+    VAL2 -->|pass| JUDGE
+    JUDGE --> REV[P4 Human review<br/>approve / edit+revalidate / reject / regenerate]
+    REV -->|approve| GATE{P4 Pre-send gate<br/>re-validate with fresh data}
+    GATE -->|paid / consent withdrawn| CAN[CANCELLED / BLOCKED]
+    GATE -->|ok| MAIL[P4 Mock email service<br/>MOCK_SENT, no real email]
+    RAG --> QA[P2 Customer policy Q&A]
+    PROF --> QA
+    MAIL --> AUD[(P4 Audit + observability<br/>append-only, PII-redacted)]
+    REV --> AUD
+    VAL --> AUD
+    BLK --> AUD

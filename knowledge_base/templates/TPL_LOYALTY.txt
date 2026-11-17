@@ -1,0 +1,13 @@
+Subject: Thank you for {tenure_months} months with {company_name}
+CTA: Claim your loyalty reward
+---
+Dear {first_name},
+
+Thank you for staying with {company_name} for {tenure_months} months. We are grateful for your loyalty and truly appreciate the trust you place in us.
+[[OFFER]]
+To say thank you, we are pleased to offer you our {offer_name}: {offer_value}. {offer_terms} Please use it before {offer_expiry}.
+[[/OFFER]]
+If you have any questions, contact us at {support_phone} or {support_email}.
+
+Warm regards,
+The {company_name} Team

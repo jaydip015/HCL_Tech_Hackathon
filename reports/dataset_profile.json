@@ -1,0 +1,254 @@
+{
+  "path": "data/raw/customer_churn_1m.csv",
+  "rows": 1000000,
+  "columns": [
+    "customer_id",
+    "signup_date",
+    "age",
+    "gender",
+    "annual_income",
+    "education",
+    "marital_status",
+    "dependents",
+    "tenure",
+    "contract",
+    "payment_method",
+    "paperless_billing",
+    "senior_citizen",
+    "monthlycharges",
+    "totalcharges",
+    "num_services",
+    "has_phone_service",
+    "has_internet_service",
+    "has_online_security",
+    "has_online_backup",
+    "has_device_protection",
+    "has_tech_support",
+    "has_streaming_tv",
+    "has_streaming_movies",
+    "customer_satisfaction",
+    "num_complaints",
+    "num_service_calls",
+    "late_payments",
+    "avg_monthly_gb",
+    "days_since_last_interaction",
+    "credit_score",
+    "churn"
+  ],
+  "dtypes": {
+    "customer_id": "str",
+    "signup_date": "str",
+    "age": "int64",
+    "gender": "str",
+    "annual_income": "float64",
+    "education": "str",
+    "marital_status": "str",
+    "dependents": "int64",
+    "tenure": "int64",
+    "contract": "str",
+    "payment_method": "str",
+    "paperless_billing": "str",
+    "senior_citizen": "int64",
+    "monthlycharges": "float64",
+    "totalcharges": "float64",
+    "num_services": "int64",
+    "has_phone_service": "int64",
+    "has_internet_service": "int64",
+    "has_online_security": "int64",
+    "has_online_backup": "int64",
+    "has_device_protection": "int64",
+    "has_tech_support": "int64",
+    "has_streaming_tv": "int64",
+    "has_streaming_movies": "int64",
+    "customer_satisfaction": "float64",
+    "num_complaints": "float64",
+    "num_service_calls": "int64",
+    "late_payments": "int64",
+    "avg_monthly_gb": "float64",
+    "days_since_last_interaction": "int64",
+    "credit_score": "float64",
+    "churn": "int64"
+  },
+  "null_counts": {
+    "customer_id": 0,
+    "signup_date": 0,
+    "age": 0,
+    "gender": 0,
+    "annual_income": 29959,
+    "education": 0,
+    "marital_status": 0,
+    "dependents": 0,
+    "tenure": 0,
+    "contract": 0,
+    "payment_method": 0,
+    "paperless_billing": 0,
+    "senior_citizen": 0,
+    "monthlycharges": 0,
+    "totalcharges": 0,
+    "num_services": 0,
+    "has_phone_service": 0,
+    "has_internet_service": 0,
+    "has_online_security": 0,
+    "has_online_backup": 0,
+    "has_device_protection": 0,
+    "has_tech_support": 0,
+    "has_streaming_tv": 0,
+    "has_streaming_movies": 0,
+    "customer_satisfaction": 19921,
+    "num_complaints": 29906,
+    "num_service_calls": 0,
+    "late_payments": 0,
+    "avg_monthly_gb": 50012,
+    "days_since_last_interaction": 0,
+    "credit_score": 40395,
+    "churn": 0
+  },
+  "duplicate_customer_ids": 0,
+  "categorical_values": {},
+  "numeric_stats": {
+    "age": {
+      "min": 18.0,
+      "max": 90.0,
+      "n": 1000000,
+      "mean": 44.7246
+    },
+    "annual_income": {
+      "min": 20000.0,
+      "max": 250000.0,
+      "n": 970041,
+      "mean": 58788.3119
+    },
+    "dependents": {
+      "min": 0.0,
+      "max": 5.0,
+      "n": 1000000,
+      "mean": 0.7998
+    },
+    "tenure": {
+      "min": 1.0,
+      "max": 72.0,
+      "n": 1000000,
+      "mean": 22.3819
+    },
+    "senior_citizen": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.1995
+    },
+    "monthlycharges": {
+      "min": 20.0,
+      "max": 854.9567301092312,
+      "n": 1000000,
+      "mean": 86.4437
+    },
+    "totalcharges": {
+      "min": 16.3,
+      "max": 16252.86150782197,
+      "n": 1000000,
+      "mean": 1837.3214
+    },
+    "num_services": {
+      "min": 1.0,
+      "max": 6.0,
+      "n": 1000000,
+      "mean": 2.5637
+    },
+    "has_phone_service": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.7696
+    },
+    "has_internet_service": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.8497
+    },
+    "has_online_security": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.3395
+    },
+    "has_online_backup": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.4257
+    },
+    "has_device_protection": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.2971
+    },
+    "has_tech_support": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.4973
+    },
+    "has_streaming_tv": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.6
+    },
+    "has_streaming_movies": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.5491
+    },
+    "customer_satisfaction": {
+      "min": 1.0,
+      "max": 9.0,
+      "n": 980079,
+      "mean": 6.1591
+    },
+    "num_complaints": {
+      "min": 0.0,
+      "max": 7.0,
+      "n": 970094,
+      "mean": 0.7017
+    },
+    "num_service_calls": {
+      "min": 0.0,
+      "max": 12.0,
+      "n": 1000000,
+      "mean": 1.7602
+    },
+    "late_payments": {
+      "min": 0.0,
+      "max": 5.0,
+      "n": 1000000,
+      "mean": 0.401
+    },
+    "avg_monthly_gb": {
+      "min": 0.0,
+      "max": 557.8240230551536,
+      "n": 949988,
+      "mean": 39.0952
+    },
+    "days_since_last_interaction": {
+      "min": 1.0,
+      "max": 365.0,
+      "n": 1000000,
+      "mean": 44.4942
+    },
+    "credit_score": {
+      "min": 300.0,
+      "max": 850.0,
+      "n": 959605,
+      "mean": 678.5621
+    },
+    "churn": {
+      "min": 0.0,
+      "max": 1.0,
+      "n": 1000000,
+      "mean": 0.0992
+    }
+  }
+}

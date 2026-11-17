@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -19,3 +20,21 @@ env/
 
 # OS
 .DS_Store
+=======
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+data/*.db
+data/*.db-*
+data/raw/*
+data/processed/*
+data/synthetic/*
+data/vector_store/*
+data/samples/*
+!data/**/.gitkeep
+logs/*
+!logs/.gitkeep
+.venv/
+.DS_Store
+>>>>>>> cf3d9d6a06325aa0d757e1a8f22210a961c20db5

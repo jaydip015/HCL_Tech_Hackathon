@@ -1,0 +1,34 @@
+# Payment reminder progression (SYNTHETIC DEMONSTRATION POLICY).
+# Source document: knowledge_base/policies/05_payment_reminder_policy.md
+version: "rem-v1.0"
+
+# Boundary rule: both ends inclusive. Day 15 = stage 1, day 16 = stage 2,
+# day 30 = stage 2, day 31 = stage 3. days_overdue = as_of_date - bill_due_date.
+stages:
+  - stage: 1
+    min_days: 1
+    max_days: 15
+    tone: COURTEOUS
+    template: TPL_REMIND_S1
+    label: "Courteous reminder"
+  - stage: 2
+    min_days: 16
+    max_days: 30
+    tone: FIRM
+    template: TPL_REMIND_S2
+    label: "Firm but respectful reminder"
+  - stage: 3
+    min_days: 31
+    max_days: null
+    tone: FORMAL
+    template: TPL_REMIND_S3
+    label: "Formal notice"
+
+# Every reminder must contain these facts (checked by the validator).
+must_include: [amount_due, due_date, support_phone, dispute_url]
+
+# Amount comparison tolerance (currency units).
+amount_tolerance: 0.01
+
+# Payment statuses that may carry an outstanding amount.
+statuses_with_balance: [UNPAID, PARTIAL]

@@ -1,0 +1,13 @@
+Subject: Thank you, {first_name}
+CTA: View your account
+---
+Dear {first_name},
+
+Thank you for being a valued {company_name} customer. We truly appreciate having you with us.
+[[OFFER]]
+As a small thank-you, we have an approved offer for you: {offer_name} - {offer_value}. {offer_terms} This offer is available until {offer_expiry}.
+[[/OFFER]]
+If you ever need help, our support team is available at {support_phone} or {support_email}.
+
+Warm regards,
+The {company_name} Team

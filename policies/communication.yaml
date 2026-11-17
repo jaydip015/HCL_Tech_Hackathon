@@ -1,0 +1,102 @@
+# Communication, strategy, frequency and wording rules (SYNTHETIC DEMONSTRATION POLICY).
+# Source documents: 06_communication_frequency_policy.md, 07_tone_and_communication_policy.md
+version: "comm-v1.0"
+
+strategy_map:
+  CONSISTENT: {objective: APPRECIATION, tone: WARM, offer: OPTIONAL, template: TPL_THANKS,
+               policy_ref: "Tone and Communication Policy §3.1"}
+  LOYAL:      {objective: REWARD, tone: WARM, offer: REQUIRED, template: TPL_LOYALTY,
+               policy_ref: "Customer Loyalty Policy §3"}
+  DECLINING:  {objective: REENGAGE, tone: FRIENDLY, offer: PREFERRED, template: TPL_REENGAGE,
+               policy_ref: "Offer Eligibility Policy §4"}
+  DORMANT:    {objective: REACTIVATE, tone: FRIENDLY, offer: PREFERRED, template: TPL_REACTIVATE,
+               policy_ref: "Offer Eligibility Policy §4"}
+  OVERDUE:    {objective: REMIND, tone: STAGE_BASED, offer: NEVER, template: STAGE_BASED,
+               policy_ref: "Payment Reminder Policy §2"}
+
+# When a REQUIRED/PREFERRED offer is not available, fall back to this strategy.
+no_offer_fallback:
+  LOYAL: {objective: APPRECIATION, tone: WARM, template: TPL_THANKS}
+
+# Objectives that count as marketing (need consent). REMIND is a service/billing message.
+marketing_objectives: [APPRECIATION, REWARD, REENGAGE, REACTIVATE]
+service_objectives: [REMIND]
+
+frequency:
+  marketing_cooldown_days: 7     # no marketing email within 7 days of any contact
+  reminder_cooldown_days: 5      # no payment reminder within 5 days of the last contact
+  duplicate_window_days: 30      # same template or identical content within 30 days = duplicate
+
+support:   # synthetic contact details used in every email
+  phone: "1800-200-3000"
+  email: "support@example-telecom.com"
+  dispute_url: "https://www.example-telecom.com/billing/dispute"
+  company_name: "ExampleTel"
+
+currency:
+  symbol: "$"
+  code: "USD"
+
+length:
+  subject_max: 120
+  body_min: 60
+  body_max: 2500
+
+# Phrases that are never allowed (case-insensitive substring match).
+banned_phrases:
+  - "final warning"
+  - "legal action"
+  - "lawsuit"
+  - "court"
+  - "blacklist"
+  - "we will disconnect"
+  - "guaranteed"
+  - "risk-free"
+  - "act now or"
+  - "last chance"
+  - "you have failed"
+  - "shame"
+  - "free forever"
+  - "lifetime"
+
+# Promotional vocabulary. Not allowed in REMIND emails, and only allowed elsewhere when an
+# approved offer is attached to the strategy.
+promo_terms:
+  - "discount"
+  - "% off"
+  - "cashback"
+  - "promo"
+  - "coupon"
+  - "special offer"
+  - "deal"
+  - "voucher"
+  - "bonus"
+
+# Internal terms that must never be disclosed to customers.
+internal_terms:
+  - "segment"
+  - "dormant"
+  - "declining"
+  - "churn"
+  - "reason code"
+  - "classified"
+  - "OVERDUE"
+  - "LOYAL"
+
+tone_rules:
+  WARM: {required_any: ["thank", "appreciate", "grateful"]}
+  FRIENDLY: {required_any: ["we'd love", "we would love", "welcome", "miss", "here to help", "happy to"]}
+  COURTEOUS: {required_any: ["please", "kindly", "thank"]}
+  FIRM: {required_any: ["please", "kindly"]}
+  FORMAL: {required_any: ["please", "kindly"]}
+  max_exclamations: 3
+  max_all_caps_words: 2
+
+tone_judge:
+  warn_below: 3   # any 1-5 score below this produces a WARN (advisory only)
+
+generation:
+  max_repair_attempts: 2
+  temperature: 0.2
+  max_tokens: 900
+  rag_top_k: 3

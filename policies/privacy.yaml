@@ -1,0 +1,52 @@
+# Privacy and data-use rules (SYNTHETIC DEMONSTRATION POLICY).
+# Source document: knowledge_base/policies/08_customer_privacy_policy.md
+version: "priv-v1.0"
+
+# Protected characteristics and proxies. Never stored in the customers table, never used
+# for decisions and never sent to an LLM.
+excluded_fields:
+  - gender
+  - age
+  - senior_citizen
+  - SeniorCitizen
+  - marital_status
+  - dependents
+  - education
+  - annual_income
+  - credit_score
+
+# Only these profile fields may be placed in an LLM prompt (as verified facts).
+llm_context_allowed_fields:
+  - first_name
+  - tenure_months
+  - tenure_years
+  - contract_type
+  - amount_due
+  - due_date
+  - days_overdue
+  - reminder_stage
+  - offer_id
+  - offer_name
+  - offer_value
+  - offer_description
+  - offer_terms
+  - offer_expiry
+  - support_phone
+  - support_email
+  - dispute_url
+  - company_name
+
+# Keys removed or masked before anything is written to audit logs.
+log_redact_fields:
+  - customer_name
+  - first_name
+  - email_address
+  - email
+
+# Regex patterns that must never appear in outgoing emails.
+pii_patterns:
+  card_number: '\b(?:\d[ -]?){13,19}\b'
+  national_id_12_digit: '\b\d{4}[ -]?\d{4}[ -]?\d{4}\b'
+  pan_like: '\b[A-Z]{5}\d{4}[A-Z]\b'
+  ssn_like: '\b\d{3}-\d{2}-\d{4}\b'
+  iban_like: '\b[A-Z]{2}\d{2}[A-Z0-9]{11,30}\b'

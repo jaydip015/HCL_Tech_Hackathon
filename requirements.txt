@@ -1,0 +1,30 @@
+# Core (required)
+pandas>=2.2
+numpy>=1.26
+pydantic>=2.6
+pyyaml>=6.0
+scikit-learn>=1.4          # TF-IDF embedding fallback
+
+# Backend API
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9    # CSV upload endpoint
+httpx>=0.27                # FastAPI TestClient
+
+# Frontend
+streamlit>=1.40
+plotly>=5.20
+
+# RAG (recommended; the app falls back to TF-IDF + a local vector store without them)
+chromadb>=0.5
+sentence-transformers>=2.7
+
+# LLM (optional SDK; without it the Claude API is called over HTTPS with the standard library)
+anthropic>=0.40
+
+# Testing
+pytest>=8.0
+
+# Optional extras
+# presidio-analyzer>=2.2   # extra PII detection (regex checks always run)
+# kaggle>=1.6              # scripts/download_dataset.py
