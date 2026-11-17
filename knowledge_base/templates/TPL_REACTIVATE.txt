@@ -1,0 +1,13 @@
+Subject: We miss you, {first_name}
+CTA: Reconnect today
+---
+Hi {first_name},
+
+It has been a while since we last saw you, and we miss having you with {company_name}. We would love to welcome you back whenever you are ready.
+[[OFFER]]
+To make coming back easier, here is an approved offer: {offer_name} - {offer_value}. {offer_terms} It is available until {offer_expiry}.
+[[/OFFER]]
+If there is anything we can do better, we are here to help at {support_phone} or {support_email}.
+
+Best wishes,
+The {company_name} Team

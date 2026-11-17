@@ -1,0 +1,13 @@
+Subject: We'd love to help you get more from your plan
+CTA: Explore your plan
+---
+Hi {first_name},
+
+We would love to help you get the most out of your {company_name} plan. If anything is not working the way you want, we are happy to help you find the right fit.
+[[OFFER]]
+To welcome you back, here is an approved offer for you: {offer_name} - {offer_value}. {offer_terms} It is available until {offer_expiry}.
+[[/OFFER]]
+Our team is here to help at {support_phone} or {support_email}.
+
+Best wishes,
+The {company_name} Team

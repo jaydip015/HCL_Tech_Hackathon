@@ -1,0 +1,82 @@
+# APPROVED OFFER CATALOG (SYNTHETIC DEMONSTRATION DATA - not real offers).
+# Source document: knowledge_base/policies/04_offer_eligibility_policy.md
+# Only offers listed here may ever appear in an email. The LLM never invents offers.
+version: "offers-2026.11"
+
+global_rules:
+  max_offers_per_message: 1
+  never_for_segments: [OVERDUE]
+  require_marketing_consent: true
+
+offers:
+  - offer_id: LOYALTY_001
+    name: "Loyalty Rewards"
+    value: "10% discount"
+    description: "10% discount on your monthly plan charges"
+    terms: "Valid for the next billing cycle only. Applies to base plan charges."
+    eligible_segments: [LOYAL]
+    min_tenure_months: 36
+    start_date: "2026-01-01"
+    expiry_date: "2027-03-31"
+    channels: [EMAIL]
+    status: ACTIVE
+
+  - offer_id: LOYALTY_2025
+    name: "Loyalty Rewards 2025"
+    value: "15% discount"
+    description: "15% discount on your monthly plan charges"
+    terms: "Valid for one billing cycle."
+    eligible_segments: [LOYAL]
+    min_tenure_months: 36
+    start_date: "2025-01-01"
+    expiry_date: "2025-12-31"   # EXPIRED - kept to demonstrate offer-expiry validation
+    channels: [EMAIL]
+    status: ACTIVE
+
+  - offer_id: REENGAGE_001
+    name: "Welcome Back Offer"
+    value: "5 GB bonus data"
+    description: "5 GB of bonus data added to your plan"
+    terms: "Bonus data is valid for 30 days after activation."
+    eligible_segments: [DECLINING]
+    min_tenure_months: 0
+    start_date: "2026-06-01"
+    expiry_date: "2027-01-31"
+    channels: [EMAIL]
+    status: ACTIVE
+
+  - offer_id: WINBACK_001
+    name: "Win-Back Offer"
+    value: "20% discount"
+    description: "20% discount on your monthly plan charges"
+    terms: "Valid for the first billing cycle after you resume using the service."
+    eligible_segments: [DORMANT, DECLINING]
+    min_tenure_months: 0
+    start_date: "2026-06-01"
+    expiry_date: "2027-02-28"
+    channels: [EMAIL]
+    status: ACTIVE
+
+  - offer_id: THANKS_001
+    name: "Thank You Bonus"
+    value: "2 GB bonus data"
+    description: "2 GB of bonus data as a thank-you"
+    terms: "Bonus data is valid for 30 days after activation."
+    eligible_segments: [CONSISTENT]
+    min_tenure_months: 6
+    start_date: "2026-01-01"
+    expiry_date: "2027-06-30"
+    channels: [EMAIL]
+    status: ACTIVE
+
+  - offer_id: SMS_ONLY_001
+    name: "SMS Flash Pack"
+    value: "1 GB bonus data"
+    description: "1 GB bonus data"
+    terms: "SMS channel only."
+    eligible_segments: [CONSISTENT, LOYAL]
+    min_tenure_months: 0
+    start_date: "2026-01-01"
+    expiry_date: "2027-12-31"
+    channels: [SMS]          # not eligible for EMAIL - demonstrates channel rule
+    status: ACTIVE

@@ -1,0 +1,11 @@
+Subject: Action needed: your payment of {amount_due} is overdue
+CTA: Pay now or contact support
+---
+Dear {first_name},
+
+Our records show that your payment of {amount_due}, due on {due_date}, is now {days_overdue} days overdue. Please pay the outstanding amount as soon as possible.
+
+If you are having difficulty paying, or you believe the bill is incorrect, please contact us on {support_phone} or raise a dispute at {dispute_url}. We are here to help.
+
+Regards,
+The {company_name} Billing Team
